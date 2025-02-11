@@ -1,0 +1,1 @@
+from src.core.main_core import chek, kalkulator, random_primer
