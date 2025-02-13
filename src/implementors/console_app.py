@@ -1,4 +1,4 @@
-from src.core import chek, kalkulator, random_primer
+from src.core import chek, calk, random_primer
 
 def consol_version():
     random_example = random_primer()
@@ -8,7 +8,7 @@ def consol_version():
     except ValueError:
         print('вы ввели не число')
     else:
-        answer = kalkulator(random_example)
+        answer = calk(random_example)
         result = chek(answer, user_input)
         print(result)
 

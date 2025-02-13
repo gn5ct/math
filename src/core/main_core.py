@@ -7,7 +7,7 @@ def random_primer():
     znak = random.choice(myseq)
     return f"{chislo_1} {znak} {chislo_2}"
 
-def kalkulator(primer):
+def calk(primer):
     split_primer = primer.split(' ')
     nomer_1 = float(split_primer[0])
     znako = split_primer[1]
@@ -21,10 +21,10 @@ def kalkulator(primer):
     else:
         return round(nomer_1 / nomer_2, 2)
 
-def chek(corrrect, user_input):
-    if user_input == corrrect:
-        return True, corrrect
+def chek(correct, user_input):
+    if user_input == correct:
+        return True
     else:
-        return False, corrrect
+        return False
 
 
