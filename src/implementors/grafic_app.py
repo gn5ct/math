@@ -31,9 +31,16 @@ class GUI:
             with dpg.font('./ofont.ru_L.ttf', 20, tag='ofont'):
                 dpg.add_font_range_hint(dpg.mvFontRangeHint_Cyrillic)
         with dpg.window(tag='main'):
-            dpg.add_text(self.example, tag='text')
-            dpg.add_input_float(tag='answer')
-            dpg.add_button(label='Проверить ответ', callback=self.paint_answer)
+            with dpg.group(tag='login_group'):
+                dpg.add_text('Введите имя - ')
+                dpg.add_input_text()
+                dpg.add_button(label='Старт')
+            with dpg.group(tag='game_groups'):
+                dpg.add_text(self.example, tag='example')
+                dpg.add_input_float(tag='answer')
+                dpg.add_button(label='Проверить', callback=self.paint_answer)
+                dpg.hide_item('game_groups')
+
         dpg.set_primary_window(window='main', value=True)
         dpg.bind_font('ofont')
         dpg.setup_dearpygui()
@@ -44,7 +51,5 @@ class GUI:
 def graphic_version():
     t = GUI()
     t.start()
-
-
 
 
