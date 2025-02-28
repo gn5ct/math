@@ -6,12 +6,20 @@ class GUI:
     def __init__(self):
         self.example = random_primer()
         self.answer = calk(self.example)
+        self.player_name = ''
+        self.leader
+
+    def login(self):
+        self.player_name = dpg.get_value(item='name')
+        dpg.delete_item('login_group')
+        dpg.show_item('game_groups')
 
     def update(self):
         self.example = random_primer()
         self.answer = calk(self.example)
         dpg.set_value('text', self.example)
         dpg.set_value('answer', 0)
+
     def paint_answer(self):
         user_answer = dpg.get_value(item='answer')
         result = chek(correct=self.answer, user_input=user_answer)
@@ -33,8 +41,8 @@ class GUI:
         with dpg.window(tag='main'):
             with dpg.group(tag='login_group'):
                 dpg.add_text('Введите имя - ')
-                dpg.add_input_text()
-                dpg.add_button(label='Старт')
+                dpg.add_input_text(tag='name')
+                dpg.add_button(label='Старт', callback=self.login)
             with dpg.group(tag='game_groups'):
                 dpg.add_text(self.example, tag='example')
                 dpg.add_input_float(tag='answer')
