@@ -1,4 +1,5 @@
 from src.core import chek, calk, random_primer
+from src.implementors import Text_points
 import dearpygui.dearpygui as dpg
 import time
 
@@ -7,7 +8,7 @@ class GUI:
         self.example = random_primer()
         self.answer = calk(self.example)
         self.player_name = ''
-        self.leader
+        self.leader=Text_points()
 
     def login(self):
         self.player_name = dpg.get_value(item='name')
