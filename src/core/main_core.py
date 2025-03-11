@@ -22,7 +22,7 @@ def calk(primer):
         return round(nomer_1 / nomer_2, 2)
 
 def chek(correct, user_input):
-    if user_input == correct:
+    if round(user_input, 2) == round(correct, 2):
         return True
     else:
         return False
