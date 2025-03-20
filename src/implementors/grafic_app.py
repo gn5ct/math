@@ -15,6 +15,7 @@ class GUI:
         dpg.set_value(item='player_name', value=self.player_name)
         dpg.delete_item('login_group')
         dpg.show_item('game_groups')
+        self.leader.add_players(name=self.player_name)
 
 
     def update(self):
@@ -29,8 +30,11 @@ class GUI:
         print(result)
         if result == True:
             dpg.add_text('правильно', tag='_', parent='main')
+            self.leader.plus_point(self.player_name)
         else:
             dpg.add_text('неправильно', tag='_', parent='main')
+            self.leader.minus_point(self.player_name)
+
         time.sleep(4)
         dpg.delete_item('_')
         self.update()
@@ -53,9 +57,13 @@ class GUI:
                         dpg.add_text(self.example, tag='example')
                         dpg.add_input_float(tag='answer')
                         dpg.add_button(label='Проверить', callback=self.paint_answer)
+                        dpg.add_button(label='сохранить', callback=self.leader.save)
                         dpg.hide_item('game_groups')
                 with dpg.tab(label='лидеры'):
                     dpg.add_text('таблица')
+                    self.leader.load()
+                    for y in self.leader.players:
+                        dpg.add_text(f'имя - {y},  очки - {self.leader.players[y]}')
 
         dpg.set_primary_window(window='main', value=True)
         dpg.bind_font('ofont')

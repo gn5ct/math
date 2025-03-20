@@ -1,10 +1,10 @@
 from abc import ABC, abstractmethod
 class Points(ABC):
     def __init__(self):
-        self.players={}
+        self.players = {}
 
     def add_players(self, name):
-        self.players[name]=0
+        self.players[name] = 0
 
     def plus_point(self, name):
         self.players[name] += 1
